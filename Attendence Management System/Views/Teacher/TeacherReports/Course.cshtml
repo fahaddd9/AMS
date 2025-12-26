@@ -1,0 +1,140 @@
+@model Attendence_Management_System.Models.Teacher.Reports.TeacherCourseReportViewModel
+@{
+    ViewData["Title"] = "Course Report";
+}
+
+@functions {
+    public static string Pct(int total, int part)
+    {
+        if (total <= 0) return "0%";
+        var pct = (int)Math.Round(((double)part / total) * 100);
+        return $"{Math.Clamp(pct, 0, 100)}%";
+    }
+
+    public static int PctInt(int total, int part)
+    {
+        if (total <= 0) return 0;
+        var pct = (int)Math.Round(((double)part / total) * 100);
+        return Math.Clamp(pct, 0, 100);
+    }
+
+    private static string DateValue(DateOnly? d) => d?.ToString("yyyy-MM-dd") ?? string.Empty;
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Course Report</h2>
+        <div class="text-muted">@Model.CourseDisplay</div>
+        <div class="text-muted small">Total: @Model.TotalRecords · Present: @Model.Present · Late: @Model.Late · Absent: @Model.Absent</div>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-light" href="/teacher/attendance">Back</a>
+        <a class="btn btn-success" href="/teacher/reports/course/@Model.CourseId/export?from=@DateValue(Model.From)&to=@DateValue(Model.To)">Export CSV</a>
+    </div>
+</div>
+
+<div class="row g-3 mb-3">
+    <div class="col-12 col-md-4">
+        <div class="ams-card p-3">
+            <div class="ams-metric">
+                <div>
+                    <div class="label">Present</div>
+                    <div class="value">@Model.Present</div>
+                </div>
+                <span class="ams-pill">@Pct(Model.TotalRecords, Model.Present)</span>
+            </div>
+            <div class="ams-chart mt-2"><div class="bar" style="width:@(PctInt(Model.TotalRecords, Model.Present))%"></div></div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="ams-card p-3">
+            <div class="ams-metric">
+                <div>
+                    <div class="label">Late</div>
+                    <div class="value">@Model.Late</div>
+                </div>
+                <span class="ams-pill">@Pct(Model.TotalRecords, Model.Late)</span>
+            </div>
+            <div class="ams-chart mt-2"><div class="bar" style="width:@(PctInt(Model.TotalRecords, Model.Late))%"></div></div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4">
+        <div class="ams-card p-3">
+            <div class="ams-metric">
+                <div>
+                    <div class="label">Absent</div>
+                    <div class="value">@Model.Absent</div>
+                </div>
+                <span class="ams-pill">@Pct(Model.TotalRecords, Model.Absent)</span>
+            </div>
+            <div class="ams-chart mt-2"><div class="bar" style="width:@(PctInt(Model.TotalRecords, Model.Absent))%"></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="ams-card p-3 p-md-4 mb-3">
+    <form method="get" class="row g-2 align-items-end">
+        <div class="col-12 col-md-3">
+            <label class="form-label">From</label>
+            <input class="form-control" type="date" name="from" value="@(Model.From?.ToString("yyyy-MM-dd"))" />
+        </div>
+        <div class="col-12 col-md-3">
+            <label class="form-label">To</label>
+            <input class="form-control" type="date" name="to" value="@(Model.To?.ToString("yyyy-MM-dd"))" />
+        </div>
+        <div class="col-12 col-md-3">
+            <button class="btn btn-outline-light w-100" type="submit">Apply</button>
+        </div>
+    </form>
+</div>
+
+<div class="ams-card p-3 p-md-4">
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th style="width: 140px">Date</th>
+                    <th>Student</th>
+                    <th style="width: 160px">Type</th>
+                    <th style="width: 160px">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Rows.Count == 0)
+            {
+                <tr>
+                    <td colspan="4" class="text-muted">No records found.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var r in Model.Rows)
+                {
+                    <tr>
+                        <td>@r.Date.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <div class="fw-semibold">@r.StudentName</div>
+                            <div class="text-muted small">@r.StudentEmail</div>
+                        </td>
+                        <td>@(r.IsMakeUpLecture ? "Make-up" : "Scheduled")</td>
+                        <td>
+                            @if (r.Status == Attendence_Management_System.Data.AttendanceStatus.Present)
+                            {
+                                <span class="badge text-bg-success">Present</span>
+                            }
+                            else if (r.Status == Attendence_Management_System.Data.AttendanceStatus.Late)
+                            {
+                                <span class="badge text-bg-warning">Late</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-danger">Absent</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

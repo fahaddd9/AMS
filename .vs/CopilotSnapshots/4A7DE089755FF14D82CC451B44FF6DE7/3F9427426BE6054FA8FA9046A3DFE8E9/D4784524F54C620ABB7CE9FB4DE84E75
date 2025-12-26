@@ -1,0 +1,76 @@
+﻿@model IReadOnlyList<Attendence_Management_System.Models.Student.Enrollment.AvailableCourseViewModel>
+@{
+    ViewData["Title"] = "Course Enrollment";
+    var batch = (ViewBag.StudentBatch as string) ?? "-";
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Course Enrollment</h2>
+        <div class="text-muted">You can enroll in any course. Your batch: <span class="fw-semibold">@batch</span></div>
+    </div>
+    <a class="btn btn-outline-light" href="/StudentDashboard/Index">Back to Dashboard</a>
+</div>
+
+@if (TempData["Success"] is string success)
+{
+    <div class="alert alert-success">@success</div>
+}
+@if (TempData["Error"] is string error)
+{
+    <div class="alert alert-danger">@error</div>
+}
+
+<div class="ams-card p-3 p-md-4">
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th style="width: 120px">Code</th>
+                    <th>Name</th>
+                    <th style="width: 120px">Credits</th>
+                    <th style="width: 160px">Batch</th>
+                    <th style="width: 180px" class="text-end">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="5" class="text-muted">No courses found.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var c in Model)
+                {
+                    <tr>
+                        <td class="fw-semibold">@c.Code</td>
+                        <td>@c.Name</td>
+                        <td>@c.CreditHours</td>
+                        <td>@c.BatchName</td>
+                        <td class="text-end">
+                            @if (c.IsEnrolled)
+                            {
+                                <form method="post" action="/student/enrollment/unenroll" class="d-inline" onsubmit="return confirm('Unenroll from this course?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="courseId" value="@c.CourseId" />
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">Unenroll</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <form method="post" action="/student/enrollment/enroll" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="courseId" value="@c.CourseId" />
+                                    <button class="btn btn-sm btn-primary" type="submit">Enroll</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

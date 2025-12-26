@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Teacher Dashboard";
+}
+
+<h1>Teacher Dashboard</h1>
+<p>Teacher module will be implemented after Admin module.</p>
+
+<form asp-controller="Account" asp-action="Logout" method="post">
+    @Html.AntiForgeryToken()
+    <button class="btn btn-outline-danger" type="submit">Logout</button>
+</form>

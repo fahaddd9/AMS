@@ -1,0 +1,72 @@
+﻿@model IReadOnlyList<Attendence_Management_System.Models.Admin.Users.UserListItemViewModel>
+@{
+    ViewData["Title"] = "Users";
+    var selectedRole = (ViewBag.SelectedRole as string) ?? "All";
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Users</h2>
+        <div class="text-muted">Admin manages student and teacher accounts. No public registration.</div>
+    </div>
+    <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-success" href="/admin/users/students/create">+ Create Student</a>
+        <a class="btn btn-primary" href="/admin/users/teachers/create">+ Create Teacher</a>
+    </div>
+</div>
+
+@if (TempData["Success"] is string success)
+{
+    <div class="alert alert-success">@success</div>
+}
+
+<div class="ams-card p-3 p-md-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <div class="btn-group" role="group">
+            <a class="btn btn-sm @(selectedRole == "All" ? "btn-light" : "btn-outline-light")" href="/admin/users?role=All">All</a>
+            <a class="btn btn-sm @(selectedRole == "Teacher" ? "btn-light" : "btn-outline-light")" href="/admin/users?role=Teacher">Teachers</a>
+            <a class="btn btn-sm @(selectedRole == "Student" ? "btn-light" : "btn-outline-light")" href="/admin/users?role=Student">Students</a>
+            <a class="btn btn-sm @(selectedRole == "Admin" ? "btn-light" : "btn-outline-light")" href="/admin/users?role=Admin">Admin</a>
+        </div>
+        <div class="text-muted small">Total: @Model.Count</div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th style="width: 140px">Role</th>
+                    <th style="width: 180px">Batch</th>
+                    <th style="width: 140px" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="5" class="text-muted">No users found for this filter.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var u in Model)
+                {
+                    <tr>
+                        <td class="fw-semibold">@u.Name</td>
+                        <td>@u.Email</td>
+                        <td>@u.Role</td>
+                        <td>@(u.BatchName ?? "-")</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="/admin/users/@u.Id/edit">Edit</a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-muted small mt-3">Delete will be added later (Admin cannot be deleted; single Admin enforced).</div>
+</div>

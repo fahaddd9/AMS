@@ -1,0 +1,69 @@
+@model Attendence_Management_System.Models.Admin.Users.EditUserViewModel
+@{
+    ViewData["Title"] = "Edit User";
+    var batches = (IReadOnlyList<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>?)ViewBag.Batches;
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Edit User</h2>
+        <div class="text-muted">Admin can update name/email and reset password. Students require a batch.</div>
+    </div>
+    <a class="btn btn-outline-light" href="/admin/users">Back</a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-9 col-lg-7">
+        <div class="ams-card p-4">
+            <form method="post" novalidate>
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+                    <div class="text-muted small">Role: <span class="fw-semibold">@Model.Role</span></div>
+                    <div class="text-muted small">UserId: <code>@Model.Id</code></div>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" autocomplete="username" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="BatchId" class="form-label"></label>
+                        <select asp-for="BatchId" class="form-select" asp-items="batches">
+                            <option value="">-- (none) --</option>
+                        </select>
+                        <div class="text-muted small mt-1">Only applies to Students; Teachers/Admin will be saved with no batch.</div>
+                        <span asp-validation-for="BatchId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="NewPassword" class="form-label"></label>
+                        <input asp-for="NewPassword" class="form-control" autocomplete="new-password" />
+                        <div class="text-muted small mt-1">Leave empty to keep existing password.</div>
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a class="btn btn-outline-light" href="/admin/users">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

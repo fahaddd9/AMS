@@ -1,0 +1,79 @@
+using Attendence_Management_System.Data;
+using Attendence_Management_System.Models.Student.Dashboard;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace Attendence_Management_System.Controllers;
+
+[Authorize(Roles = IdentitySeed.StudentRole)]
+public class StudentDashboardController : Controller
+{
+    private readonly ApplicationDbContext _db;
+
+    public StudentDashboardController(ApplicationDbContext db)
+    {
+        _db = db;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var studentId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrWhiteSpace(studentId)) return Unauthorized();
+
+        var student = await _db.Users.AsNoTracking().Include(u => u.Batch).FirstOrDefaultAsync(u => u.Id == studentId);
+        if (student == null) return Unauthorized();
+
+        // EF Core can't apply Include after projecting with Select(e => e.Course)
+        var enrolledCourses = await _db.Enrollments.AsNoTracking()
+            .Where(e => e.StudentId == studentId)
+            .Include(e => e.Course)
+                .ThenInclude(c => c.Batch)
+            .Select(e => e.Course)
+            .Distinct()
+            .OrderBy(c => c.UniqueCode)
+            .ToListAsync();
+
+        var courseIds = enrolledCourses.Select(c => c.Id).ToList();
+
+        var attendance = await _db.Attendances.AsNoTracking()
+            .Where(a => a.StudentId == studentId && courseIds.Contains(a.CourseId))
+            .ToListAsync();
+
+        var vm = new StudentDashboardViewModel
+        {
+            StudentName = student.Name,
+            StudentEmail = student.Email ?? "",
+            BatchName = student.Batch?.Name ?? "-",
+            Courses = enrolledCourses.Select(c =>
+            {
+                var records = attendance.Where(a => a.CourseId == c.Id).ToList();
+                var present = records.Count(r => r.Status == AttendanceStatus.Present);
+                var absent = records.Count(r => r.Status == AttendanceStatus.Absent);
+                var late = records.Count(r => r.Status == AttendanceStatus.Late);
+                var total = records.Count;
+
+                var score = present + (late * 0.5);
+                var pct = total == 0 ? 0 : (int)Math.Round((score / total) * 100);
+
+                // basic label logic
+                var label = pct >= 75 ? "Good" : pct >= 60 ? "Warning" : "Low";
+
+                return new StudentCourseAttendanceViewModel
+                {
+                    CourseId = c.Id,
+                    Code = c.UniqueCode,
+                    Name = c.Name,
+                    TotalMarkedLectures = total,
+                    Present = present,
+                    Absent = absent,
+                    Late = late,
+                    AttendancePercentage = pct,
+                    StatusLabel = label
+                };
+            }).ToList()
+        };
+
+        return View(vm);
+    }
+}

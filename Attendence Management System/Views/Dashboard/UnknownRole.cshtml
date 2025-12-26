@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+<p>Your account has no role assigned. Contact the Admin.</p>
+
+<form asp-controller="Account" asp-action="Logout" method="post">
+    @Html.AntiForgeryToken()
+    <button class="btn btn-outline-danger" type="submit">Logout</button>
+</form>

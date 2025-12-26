@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="ams-card p-4">
+    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+        <div>
+            <h2 class="mb-1">Admin Dashboard</h2>
+            <p class="text-muted mb-0">Manage batches, courses, timetables, users, and assignments.</p>
+        </div>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            @Html.AntiForgeryToken()
+            <button class="btn btn-outline-light" type="submit">Logout</button>
+        </form>
+    </div>
+
+    <hr class="border-light border-opacity-10 my-4" />
+
+    <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="ams-card p-3">
+                <div class="fw-semibold">Batches</div>
+                <div class="text-muted small">Create and manage batch years.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="ams-card p-3">
+                <div class="fw-semibold">Courses</div>
+                <div class="text-muted small">Unique code, credit hours, batch mapping.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="ams-card p-3">
+                <div class="fw-semibold">Timetables</div>
+                <div class="text-muted small">Multiple days per course.</div>
+            </div>
+        </div>
+    </div>
+</div>

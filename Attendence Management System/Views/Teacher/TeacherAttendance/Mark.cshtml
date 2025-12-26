@@ -1,0 +1,84 @@
+@model Attendence_Management_System.Models.Teacher.Attendance.AttendanceMarkViewModel
+@{
+    ViewData["Title"] = "Mark Attendance";
+    var courseDisplay = (ViewBag.CourseDisplay as string) ?? "";
+    var scheduledDays = (IReadOnlyList<DayOfWeek>?)ViewBag.ScheduledDays ?? Array.Empty<DayOfWeek>();
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Mark Attendance</h2>
+        <div class="text-muted">@courseDisplay</div>
+        <div class="text-muted small">Scheduled days: @(scheduledDays.Count == 0 ? "(none)" : string.Join(", ", scheduledDays))</div>
+    </div>
+    <a class="btn btn-outline-light" href="/teacher/attendance">Back</a>
+</div>
+
+@if (TempData["Success"] is string success)
+{
+    <div class="alert alert-success">@success</div>
+}
+
+<div class="ams-card p-3 p-md-4">
+    <form method="post" novalidate>
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <input type="hidden" asp-for="CourseId" />
+
+        <div class="row g-3 align-items-end mb-3">
+            <div class="col-12 col-md-4">
+                <label asp-for="Date" class="form-label"></label>
+                <input asp-for="Date" class="form-control" type="date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="form-check mt-4">
+                    <input asp-for="IsMakeUpLecture" class="form-check-input" />
+                    <label asp-for="IsMakeUpLecture" class="form-check-label"></label>
+                </div>
+                <div class="text-muted small">Required if marking outside scheduled day-of-week.</div>
+            </div>
+            <div class="col-12 col-md-4 text-md-end">
+                <button class="btn btn-primary" type="submit">Save Attendance</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th style="width: 220px">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @for (var i = 0; i < Model.Rows.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <div class="fw-semibold">@Model.Rows[i].StudentName</div>
+                            <div class="text-muted small">@Model.Rows[i].StudentEmail</div>
+                            <input type="hidden" asp-for="Rows[i].StudentId" />
+                            <input type="hidden" asp-for="Rows[i].StudentName" />
+                            <input type="hidden" asp-for="Rows[i].StudentEmail" />
+                        </td>
+                        <td>
+                            <select class="form-select" asp-for="Rows[i].Status">
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                                <option value="Late">Late</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

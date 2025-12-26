@@ -1,0 +1,80 @@
+﻿@model Attendence_Management_System.Models.Student.Dashboard.StudentDashboardViewModel
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Student Dashboard</h2>
+        <div class="text-muted">@Model.StudentName (@Model.StudentEmail) · Batch: @Model.BatchName</div>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-success" href="/student/enrollment">Enroll Courses</a>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            @Html.AntiForgeryToken()
+            <button class="btn btn-outline-light" type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+
+<div class="ams-card p-3 p-md-4">
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th style="width: 120px">Code</th>
+                    <th>Name</th>
+                    <th style="width: 160px">Marked</th>
+                    <th style="width: 120px">Present</th>
+                    <th style="width: 120px">Late</th>
+                    <th style="width: 120px">Absent</th>
+                    <th style="width: 140px">%</th>
+                    <th style="width: 160px">Status</th>
+                    <th style="width: 140px" class="text-end">Report</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Courses.Count == 0)
+            {
+                <tr>
+                    <td colspan="9" class="text-muted">No enrolled courses yet. Click “Enroll Courses”.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var c in Model.Courses)
+                {
+                    <tr>
+                        <td class="fw-semibold">@c.Code</td>
+                        <td>@c.Name</td>
+                        <td>@c.TotalMarkedLectures</td>
+                        <td>@c.Present</td>
+                        <td>@c.Late</td>
+                        <td>@c.Absent</td>
+                        <td>@c.AttendancePercentage</td>
+                        <td>
+                            @if (c.StatusLabel == "Good")
+                            {
+                                <span class="badge text-bg-success">Good</span>
+                            }
+                            else if (c.StatusLabel == "Warning")
+                            {
+                                <span class="badge text-bg-warning">Warning</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-danger">Low</span>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="/student/report/@c.CourseId">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-muted small mt-3">Attendance % uses Present=1, Late=0.5, Absent=0.</div>
+</div>

@@ -1,0 +1,60 @@
+@model Attendence_Management_System.Models.Admin.Courses.CourseFormViewModel
+@{
+    ViewData["Title"] = Model.Id.HasValue ? "Edit Course" : "Create Course";
+    var batches = (IReadOnlyList<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>?)ViewBag.Batches;
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">@ViewData["Title"]</h2>
+        <div class="text-muted">Course code must be unique across the system.</div>
+    </div>
+    <a class="btn btn-outline-light" href="/admin/courses">Back</a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-9 col-lg-7">
+        <div class="ams-card p-4">
+            <form method="post" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <label asp-for="UniqueCode" class="form-label"></label>
+                        <input asp-for="UniqueCode" class="form-control" placeholder="e.g., CS101" />
+                        <span asp-validation-for="UniqueCode" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="e.g., Programming Fundamentals" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label asp-for="CreditHours" class="form-label"></label>
+                        <input asp-for="CreditHours" class="form-control" />
+                        <span asp-validation-for="CreditHours" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <label asp-for="BatchId" class="form-label"></label>
+                        <select asp-for="BatchId" class="form-select" asp-items="batches">
+                            <option value="">-- Select Batch --</option>
+                        </select>
+                        <span asp-validation-for="BatchId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a class="btn btn-outline-light" href="/admin/courses">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

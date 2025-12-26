@@ -1,0 +1,64 @@
+@model Attendence_Management_System.Models.Admin.Timetables.TimetableSlotFormViewModel
+@{
+    ViewData["Title"] = Model.Id.HasValue ? "Edit Timetable Slot" : "Add Timetable Slot";
+    var courses = (IReadOnlyList<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>?)ViewBag.Courses;
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">@ViewData["Title"]</h2>
+        <div class="text-muted">Add multiple days for a course if needed.</div>
+    </div>
+    <a class="btn btn-outline-light" href="/admin/timetables">Back</a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-9 col-lg-7">
+        <div class="ams-card p-4">
+            <form method="post" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label asp-for="CourseId" class="form-label">Course</label>
+                        <select asp-for="CourseId" class="form-select" asp-items="courses">
+                            <option value="">-- Select Course --</option>
+                        </select>
+                        <span asp-validation-for="CourseId" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label asp-for="DayOfWeek" class="form-label"></label>
+                        <select asp-for="DayOfWeek" class="form-select">
+                            <option value="">-- Select Day --</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                        <span asp-validation-for="DayOfWeek" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label asp-for="TimeRange" class="form-label"></label>
+                        <input asp-for="TimeRange" class="form-control" placeholder="e.g., 09:00-10:30" />
+                        <span asp-validation-for="TimeRange" class="text-danger"></span>
+                        <div class="text-muted small mt-1">Optional; attendance validation will use day-of-week (as required).</div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <a class="btn btn-outline-light" href="/admin/timetables">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

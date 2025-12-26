@@ -1,0 +1,66 @@
+@model IReadOnlyList<Attendence_Management_System.Models.Teacher.Students.TeacherStudentListItemViewModel>
+@{
+    ViewData["Title"] = "My Students";
+    var q = (ViewBag.Query as string) ?? "";
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">My Students</h2>
+        <div class="text-muted">Students enrolled in your assigned courses.</div>
+    </div>
+    <a class="btn btn-outline-light" href="/TeacherDashboard/Index">Back to Dashboard</a>
+</div>
+
+<div class="ams-card p-3 p-md-4 mb-3">
+    <form method="get" class="row g-2 align-items-end">
+        <div class="col-12 col-md-6">
+            <label class="form-label">Search</label>
+            <input class="form-control" type="text" name="q" value="@q" placeholder="Name or email" />
+        </div>
+        <div class="col-12 col-md-3">
+            <button class="btn btn-outline-light w-100" type="submit">Search</button>
+        </div>
+        <div class="col-12 col-md-3">
+            <a class="btn btn-outline-light w-100" href="/teacher/students">Clear</a>
+        </div>
+    </form>
+</div>
+
+<div class="ams-card p-3 p-md-4">
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th style="width: 180px">Courses w/ you</th>
+                    <th style="width: 140px" class="text-end">Report</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="3" class="text-muted">No students found.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var s in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="fw-semibold">@s.StudentName</div>
+                            <div class="text-muted small">@s.StudentEmail</div>
+                        </td>
+                        <td>@s.EnrolledCoursesWithMe</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="/teacher/reports/student/@s.StudentId">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

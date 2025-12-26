@@ -1,0 +1,65 @@
+@model Attendence_Management_System.Models.Admin.Users.CreateStudentViewModel
+@{
+    ViewData["Title"] = "Create Student";
+    var batches = (IReadOnlyList<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>?)ViewBag.Batches;
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Create Student</h2>
+        <div class="text-muted">Students must be assigned to a batch during registration.</div>
+    </div>
+    <a class="btn btn-outline-light" href="/admin/users?role=Student">Back</a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="ams-card p-4">
+            <form method="post" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" autocomplete="username" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" autocomplete="new-password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <div class="text-muted small mt-1">Min 8 chars, upper, lower, digit.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="BatchId" class="form-label"></label>
+                    <select asp-for="BatchId" class="form-select" asp-items="batches">
+                        <option value="">-- Select Batch --</option>
+                    </select>
+                    <span asp-validation-for="BatchId" class="text-danger"></span>
+                    @if (batches == null || batches.Count == 0)
+                    {
+                        <div class="text-warning small mt-2">No batches found. Create a batch first.</div>
+                    }
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" type="submit" @(batches == null || batches.Count == 0 ? "disabled" : "")>Create</button>
+                    <a class="btn btn-outline-light" href="/admin/users?role=Student">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

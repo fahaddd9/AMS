@@ -1,0 +1,80 @@
+﻿@model Attendence_Management_System.Models.Teacher.Reports.TeacherCourseReportViewModel
+@{
+    ViewData["Title"] = "Course Report";
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Course Report</h2>
+        <div class="text-muted">@Model.CourseDisplay</div>
+        <div class="text-muted small">Total: @Model.TotalRecords · Present: @Model.Present · Late: @Model.Late · Absent: @Model.Absent</div>
+    </div>
+    <a class="btn btn-outline-light" href="/teacher/attendance">Back</a>
+</div>
+
+<div class="ams-card p-3 p-md-4 mb-3">
+    <form method="get" class="row g-2 align-items-end">
+        <div class="col-12 col-md-3">
+            <label class="form-label">From</label>
+            <input class="form-control" type="date" name="from" value="@(Model.From?.ToString("yyyy-MM-dd"))" />
+        </div>
+        <div class="col-12 col-md-3">
+            <label class="form-label">To</label>
+            <input class="form-control" type="date" name="to" value="@(Model.To?.ToString("yyyy-MM-dd"))" />
+        </div>
+        <div class="col-12 col-md-3">
+            <button class="btn btn-outline-light w-100" type="submit">Apply</button>
+        </div>
+    </form>
+</div>
+
+<div class="ams-card p-3 p-md-4">
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th style="width: 140px">Date</th>
+                    <th>Student</th>
+                    <th style="width: 160px">Type</th>
+                    <th style="width: 160px">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Rows.Count == 0)
+            {
+                <tr>
+                    <td colspan="4" class="text-muted">No records found.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var r in Model.Rows)
+                {
+                    <tr>
+                        <td>@r.Date.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <div class="fw-semibold">@r.StudentName</div>
+                            <div class="text-muted small">@r.StudentEmail</div>
+                        </td>
+                        <td>@(r.IsMakeUpLecture ? "Make-up" : "Scheduled")</td>
+                        <td>
+                            @if (r.Status == Attendence_Management_System.Data.AttendanceStatus.Present)
+                            {
+                                <span class="badge text-bg-success">Present</span>
+                            }
+                            else if (r.Status == Attendence_Management_System.Data.AttendanceStatus.Late)
+                            {
+                                <span class="badge text-bg-warning">Late</span>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-danger">Absent</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

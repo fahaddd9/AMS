@@ -1,0 +1,16 @@
+﻿@* Simple reusable analytics cards (no external JS required) *@
+@functions{
+    public static string Pct(int total, int part)
+    {
+        if (total <= 0) return "0%";
+        var pct = (int)Math.Round(((double)part / total) * 100);
+        return $"{Math.Clamp(pct, 0, 100)}%";
+    }
+
+    public static int PctInt(int total, int part)
+    {
+        if (total <= 0) return 0;
+        var pct = (int)Math.Round(((double)part / total) * 100);
+        return Math.Clamp(pct, 0, 100);
+    }
+}

@@ -1,0 +1,76 @@
+@model IReadOnlyList<Attendence_Management_System.Models.Admin.Timetables.TimetableSlotListItemViewModel>
+@{
+    ViewData["Title"] = "Timetables";
+    var courses = (IReadOnlyList<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>?)ViewBag.Courses;
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Timetables</h2>
+        <div class="text-muted">Add one or more scheduled days for each course.</div>
+    </div>
+    <a class="btn btn-success" href="/admin/timetables/create">+ Add Slot</a>
+</div>
+
+@if (TempData["Success"] is string success)
+{
+    <div class="alert alert-success">@success</div>
+}
+
+<div class="ams-card p-3 p-md-4 mb-3">
+    <form method="get" class="d-flex gap-2 flex-wrap align-items-end">
+        <div>
+            <label class="form-label">Filter by Course</label>
+            <select class="form-select" name="courseId" asp-items="courses">
+                <option value="">All Courses</option>
+            </select>
+        </div>
+        <div>
+            <button class="btn btn-outline-light" type="submit">Apply</button>
+        </div>
+    </form>
+</div>
+
+<div class="ams-card p-3 p-md-4">
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th style="width: 160px">Day</th>
+                    <th style="width: 200px">Time</th>
+                    <th style="width: 220px" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td colspan="4" class="text-muted">No timetable slots found.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var t in Model)
+                {
+                    <tr>
+                        <td class="fw-semibold">@t.CourseDisplay</td>
+                        <td>@t.DayOfWeek</td>
+                        <td>@(string.IsNullOrWhiteSpace(t.TimeRange) ? "-" : t.TimeRange)</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="/admin/timetables/@t.Id/edit">Edit</a>
+                            <form class="d-inline" method="post" action="/admin/timetables/@t.Id/delete" onsubmit="return confirm('Delete this timetable slot?');">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="courseId" value="@Context.Request.Query["courseId"]" />
+                                <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-muted small mt-3">Teachers can only mark attendance on scheduled days unless they check “Make-up lecture”.</div>
+</div>

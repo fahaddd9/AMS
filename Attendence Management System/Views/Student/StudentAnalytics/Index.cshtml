@@ -1,0 +1,163 @@
+@model Attendence_Management_System.Models.Student.Analytics.StudentAnalyticsViewModel
+@{
+    ViewData["Title"] = "Analytics";
+}
+
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-1">Analytics</h2>
+        <div class="text-muted">Overview of your attendance in enrolled courses.</div>
+    </div>
+    <a class="btn btn-outline-light" href="/StudentDashboard/Index">Back to Dashboard</a>
+</div>
+
+<div id="chartError" class="alert alert-warning d-none"></div>
+
+<div class="row g-3 mb-3">
+    <div class="col-12 col-lg-4">
+        <div class="ams-card p-3 p-md-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="fw-semibold">Attendance Breakdown</div>
+                <span class="ams-pill">Total @Model.TotalRecords</span>
+            </div>
+            <canvas id="breakdown" height="220"></canvas>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-8">
+        <div class="ams-card p-3 p-md-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="fw-semibold">Course % (Present=1, Late=0.5)</div>
+                <span class="text-muted small">Top 6 courses by records</span>
+            </div>
+            <canvas id="coursePct" height="220"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="ams-card p-3 p-md-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <div class="fw-semibold">Courses</div>
+        <div class="text-muted small">Use Course Report for full detail.</div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,.12);">
+            <thead>
+                <tr>
+                    <th style="width: 140px">Code</th>
+                    <th>Name</th>
+                    <th style="width: 120px">Total</th>
+                    <th style="width: 120px">Present</th>
+                    <th style="width: 120px">Late</th>
+                    <th style="width: 120px">Absent</th>
+                    <th style="width: 120px">%</th>
+                    <th style="width: 140px" class="text-end">Report</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Courses.Count == 0)
+            {
+                <tr><td colspan="8" class="text-muted">No attendance records yet.</td></tr>
+            }
+            else
+            {
+                foreach (var c in Model.Courses)
+                {
+                    <tr>
+                        <td class="fw-semibold">@c.Code</td>
+                        <td>@c.Name</td>
+                        <td>@c.Total</td>
+                        <td>@c.Present</td>
+                        <td>@c.Late</td>
+                        <td>@c.Absent</td>
+                        <td>@c.Percentage</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-light" href="/student/report/@c.CourseId">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+(function () {
+  const warn = (msg) => {
+    console.error(msg);
+    const el = document.getElementById('chartError');
+    if (el) {
+      el.classList.remove('d-none');
+      el.textContent = msg;
+    }
+  };
+
+  if (!window.Chart) {
+    warn('Charts are not available because Chart.js did not load. Check browser console/network or CSP.');
+    return;
+  }
+
+  const present = @Model.Present;
+  const late = @Model.Late;
+  const absent = @Model.Absent;
+
+  const breakdownEl = document.getElementById('breakdown');
+  const courseEl = document.getElementById('coursePct');
+  if (!breakdownEl || !courseEl) {
+    warn('Chart canvas elements not found in DOM.');
+    return;
+  }
+
+  new Chart(breakdownEl, {
+    type: 'doughnut',
+    data: {
+      labels: ['Present', 'Late', 'Absent'],
+      datasets: [{
+        data: [present, late, absent],
+        backgroundColor: ['#22c55e', '#fbbf24', '#fb7185'],
+        borderColor: 'rgba(255,255,255,0.15)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: 'rgba(234,241,255,0.85)' } }
+      }
+    }
+  });
+
+  const top = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Courses.Take(6).Select(c => new { label = c.Code, value = c.Percentage })));
+  const labels = top.map(x => x.label);
+  const values = top.map(x => x.value);
+
+  new Chart(courseEl, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Attendance %',
+        data: values,
+        backgroundColor: 'rgba(124,92,255,0.65)',
+        borderColor: 'rgba(167,139,250,0.85)',
+        borderWidth: 1,
+        borderRadius: 10
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: { ticks: { color: 'rgba(234,241,255,0.80)' }, grid: { color: 'rgba(255,255,255,0.06)' } },
+        y: { beginAtZero: true, max: 100, ticks: { color: 'rgba(234,241,255,0.80)' }, grid: { color: 'rgba(255,255,255,0.06)' } }
+      },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+})();
+</script>
+}
