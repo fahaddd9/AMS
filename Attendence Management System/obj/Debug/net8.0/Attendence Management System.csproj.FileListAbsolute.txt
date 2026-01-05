@@ -149,4 +149,5 @@ C:\UNIVERSITY\EAD\Attendence Management System\Attendence Management System\obj\
 C:\UNIVERSITY\EAD\Attendence Management System\Attendence Management System\obj\Debug\net8.0\Attendence Management System.pdb
 C:\UNIVERSITY\EAD\Attendence Management System\Attendence Management System\obj\Debug\net8.0\Attendence Management System.genruntimeconfig.cache
 C:\UNIVERSITY\EAD\Attendence Management System\Attendence Management System\obj\Debug\net8.0\ref\Attendence Management System.dll
+C:\UNIVERSITY\EAD\Attendence Management System\Attendence Management System\obj\Debug\net8.0\Attendence Management System.sourcelink.json
 C:\UNIVERSITY\EAD\Attendence Management System\Attendence Management System\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

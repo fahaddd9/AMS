@@ -1,4 +1,3 @@
-using System.Text;
 using Attendence_Management_System.Data;
 using Attendence_Management_System.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -6,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -93,6 +94,12 @@ builder.Services
     });
 
 var app = builder.Build();
+// Apply EF Core migrations automatically on startup (for first deployment)
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
+}
 
 // Seed DB (auto-migrate + roles + single admin)
 await IdentitySeed.SeedAsync(app.Services, app.Configuration);

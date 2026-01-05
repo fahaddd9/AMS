@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\views\\student\\studentreport\\course.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\views\\student\\studentreport\\course.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\views\\student\\studentreport\\course.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\views\\student\\studentreport\\course.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\data\\identityseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\data\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\data\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|solutionrelative:attendence management system\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{989DD1AB-4B85-45E0-864A-83F5E002662E}|Attendence Management System\\Attendence Management System.csproj|c:\\university\\ead\\attendence management system\\attendence management system\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -378,63 +378,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 90,
-              "Title": "TeacherStudentsController.cs",
-              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
-              "RelativeDocumentMoniker": "Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
-              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
-              "RelativeToolTip": "Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T14:04:39.305Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 91,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
-              "RelativeDocumentMoniker": "Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
-              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
-              "RelativeToolTip": "Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T14:04:52.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "Attendence Management System\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "Attendence Management System\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACgAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T10:25:40.964Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Course.cshtml",
-              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
-              "RelativeDocumentMoniker": "Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
-              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
-              "RelativeToolTip": "Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAAAHkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T12:38:14.78Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -456,10 +404,82 @@
               "RelativeDocumentMoniker": "Attendence Management System\\Program.cs",
               "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Program.cs",
               "RelativeToolTip": "Attendence Management System\\Program.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAAAHcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAArwGQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T10:26:12.198Z",
+              "WhenOpened": "2025-12-26T10:26:12.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 91,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
+              "RelativeDocumentMoniker": "Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
+              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
+              "RelativeToolTip": "Attendence Management System\\Views\\Teacher\\TeacherStudents\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-26T14:04:52.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\appsettings.json",
+              "RelativeDocumentMoniker": "Attendence Management System\\appsettings.json",
+              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\appsettings.json",
+              "RelativeToolTip": "Attendence Management System\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-26T10:26:00.052Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Course.cshtml",
+              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
+              "RelativeDocumentMoniker": "Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
+              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
+              "RelativeToolTip": "Attendence Management System\\Views\\Student\\StudentReport\\Course.cshtml",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAAAHkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-26T12:38:14.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Attendence Management System\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "Attendence Management System\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-26T10:25:40.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Attendence Management System\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Attendence Management System\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T10:24:49.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "TeacherStudentsController.cs",
+              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
+              "RelativeDocumentMoniker": "Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
+              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
+              "RelativeToolTip": "Attendence Management System\\Controllers\\Teacher\\TeacherStudentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-26T14:04:39.305Z"
             },
             {
               "$type": "Document",
@@ -471,8 +491,7 @@
               "RelativeToolTip": "Attendence Management System\\Models\\Teacher\\Students\\TeacherStudentListItemViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T14:04:24.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T14:04:24.392Z"
             },
             {
               "$type": "Document",
@@ -497,18 +516,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-26T13:43:51.729Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\appsettings.json",
-              "RelativeDocumentMoniker": "Attendence Management System\\appsettings.json",
-              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\appsettings.json",
-              "RelativeToolTip": "Attendence Management System\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-26T10:26:00.052Z"
             },
             {
               "$type": "Document",
@@ -1208,7 +1215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\ApplicationUser.cs",
@@ -1220,7 +1227,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Batch.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\Batch.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\Batch.cs",
@@ -1232,7 +1239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IdentitySeed.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\IdentitySeed.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\IdentitySeed.cs",
@@ -1256,7 +1263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Course.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\Course.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\Course.cs",
@@ -1268,7 +1275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "TimetableSlot.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\TimetableSlot.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\TimetableSlot.cs",
@@ -1280,7 +1287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Enrollment.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\Enrollment.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\Enrollment.cs",
@@ -1336,8 +1343,7 @@
               "RelativeToolTip": "Attendence Management System\\Views\\TeacherDashboard\\Index.cshtml",
               "ViewState": "AgIAADMAAAAAAAAAAIBJwDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-26T10:25:47.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-26T10:25:47.223Z"
             },
             {
               "$type": "Document",
@@ -1450,18 +1456,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Attendence Management System\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Attendence Management System\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T10:24:49.255Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "RefreshToken.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\RefreshToken.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\RefreshToken.cs",
@@ -1473,7 +1467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Attendance.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\Attendance.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\Attendance.cs",
@@ -1485,7 +1479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "TeacherAssignment.cs",
               "DocumentMoniker": "C:\\UNIVERSITY\\EAD\\Attendence Management System\\Attendence Management System\\Data\\TeacherAssignment.cs",
               "RelativeDocumentMoniker": "Attendence Management System\\Data\\TeacherAssignment.cs",
